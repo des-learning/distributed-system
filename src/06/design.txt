@@ -1,0 +1,39 @@
+Todo API
+========
+
+model:
+{id: 1, title: "some title", finish: true}
+
+Root endpoint: /todos
+
+Create
+  Request:
+    route: POST /todos
+    body: {"title": "some title"}
+  Response (request success, object created):
+    status code: 201 (created)
+    body: {"id": 1}
+  Response (request error, body kosong/bukan json/tidak ada title):
+    status code: 400 (bad request)
+    body: {"message": "error message"}
+
+Read
+  Read all todos
+    Request:
+      route: GET /todos
+    Response (ada data)
+      status code: 200
+      body: {"todos": [{"id": 1, "title": "some title", "finish": false}, ...]}
+
+  Read one todo
+    Request:
+      route: GET /todos/<id>
+    Response (ada data)
+      status code: 200
+      body: {"todo": {"id": 1, "title": "some title", "finish": false}}
+    Response (not found)
+      status code: 404
+      body: {"message": "todo id {id} not found"}
+
+Update
+Delete
